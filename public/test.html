@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>flv.js</title>
+</head>
+<body>
+<video id="videoElement" controls autoplay muted width="1024" height="576"></video>
+<script src="flv.min.js"></script>
+<script>
+    import flvjs from "flv.js";
+
+    var player = document.getElementById('videoElement');
+    if (flvjs.isSupported()) {
+        var flvPlayer = flvjs.createPlayer({
+            type: 'rtmp',
+            url: 'rtmp://ns8.indexforce.com/home/mystream',
+            isLive: true
+        });
+        flvPlayer.attachMediaElement(videoElement);
+        flvPlayer.load(); //加载
+        flvPlayer.play(); //播放
+    }
+</script>
+</body>
+</html>
